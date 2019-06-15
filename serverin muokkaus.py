@@ -1,35 +1,22 @@
-'''
-!!!!!!!!!Tiedossa olevat bugit ja mitä tulee korjata/opetella!!!!!!!!!!!!!
+# Radan valintaa ei vielä ole
 
--Ratojen valitsemisessa käytetään numeroita kirjoituksen siasta
--arvoja syöttäessä kirjaimia tai tyhjäksi jättäminen tilttaa
 
-'''
 import json
 #Ladataan event tiedosto
 with open('event.json', 'r') as f:
     data = json.load(f)
-    
 
 '''
     Perus muuttujat muistiinpanot
-data['track']                           #Mikä rata
-data['preRaceWaitingTimeSeconds']       #Pre racen odotteluaika sekunteina
-data['cloudLevel']                      #Pilvisyys 0.0 - 1.0
-data['rain']                            #Sateen määrä 0.0 - 1.0
-
-    #1 Session muuttujat (qualifuing)
-data["sessions"][0]['hourOfDay']                #Kellonaika 0-23
-data["sessions"][0]['sessionDurationMinutes']   #Session data["sessions"][1]['sessionDurationMinutes'] minuteissa
-
-    #2 Session muuttujat (race)
-data["sessions"][1]['hourOfDay']                #Kellonaika 0-23
-data["sessions"][1]['sessionDurationMinutes']   #Session data["sessions"][1]['sessionDurationMinutes'] minuteissa
+data['preRaceWaitingTimeSeconds']               #Pre racen odotteluaika sekunteina
+data['cloudLevel']                              #Pilvisyys 0.0 - 1.0
+data['rain']                                    #Sateen määrä 0.0 - 1.0
+data["sessions"][0]['hourOfDay']                #Aika-ajon kellonaika 0-23
+data["sessions"][0]['sessionDurationMinutes']   #Aika-ajon kesto minuteissa
+data["sessions"][1]['hourOfDay']                #Kisan Kellonaika 0-23
+data["sessions"][1]['sessionDurationMinutes']   #Kisan kesto minuuteissa
 
 '''
-## kysytään uusi rata ja sille vaihtoehdot
-#data['track'] = input('Uusi rata?: ')
-## varmistetaan että tulee oikea arvo !!!!KESKEN!!!!
 
 # Defaultti arvo ei vielä ole toiminnossa
 def user_number(prompt, min_num, max_num, default):
@@ -75,7 +62,6 @@ data["sessions"][0]['sessionDurationMinutes'] = int(data["sessions"][0]['session
 data["sessions"][1]['hourOfDay'] = int(data["sessions"][1]['hourOfDay'])
 data["sessions"][1]['sessionDurationMinutes'] = int(data["sessions"][1]['sessionDurationMinutes'])
 
-
 #######################################################################################################
 
 #printtaillaan uudet asetukset vielä näytölle
@@ -92,10 +78,7 @@ print('Kisan kellonaika: ', data["sessions"][1]['hourOfDay'])
 print('Kisan pituus(min)', data["sessions"][1]['sessionDurationMinutes'])
 print()
 
-
-
-
-
+#######################################################################################################
 
 
 # Tallennetaan uudet arvot samaan tiedostoon ja muokataan rivitys
